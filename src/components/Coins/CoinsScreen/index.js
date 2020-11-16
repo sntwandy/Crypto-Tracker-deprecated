@@ -14,6 +14,9 @@ import {useCoins} from '../../../hooks/useCoins';
 // Components
 import {CoinsItem} from '../CoinsItem';
 
+// Resources
+import {colors} from '../../../resources/colors';
+
 export const CoinsScreen = (props) => {
   const [coins, setCoins] = useCoins();
 
@@ -25,7 +28,6 @@ export const CoinsScreen = (props) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.titleText}>Coins View</Text>
       {coins !== undefined ? (
         <FlatList
           data={coins}
@@ -35,9 +37,9 @@ export const CoinsScreen = (props) => {
       ) : (
         <ActivityIndicator style={styles.loader} color="#000" size="large" />
       )}
-      <Pressable style={styles.btn} onPress={handlePress}>
+      {/* <Pressable style={styles.btn} onPress={handlePress}>
         <Text style={styles.btnText}>Go to detail</Text>
-      </Pressable>
+      </Pressable> */}
     </View>
   );
 };
@@ -46,13 +48,7 @@ export const CoinsScreen = (props) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-  },
-  titleText: {
-    color: '#000',
-    fontSize: 30,
-    textAlign: 'center',
-    marginTop: 10,
+    backgroundColor: colors.charade,
   },
   btn: {
     backgroundColor: 'green',
