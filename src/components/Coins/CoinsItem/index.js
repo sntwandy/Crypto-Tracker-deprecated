@@ -1,12 +1,18 @@
 import React from 'react';
-import {View, Text, Image, StyleSheet, Platform} from 'react-native';
+import {View, Text, Pressable, StyleSheet, Platform} from 'react-native';
 
 // Resources
 import {colors} from '../../../resources/colors';
 
-export const CoinsItem = ({name, symbol, percent_change_1h, price_usd}) => {
+export const CoinsItem = ({
+  name,
+  symbol,
+  percent_change_1h,
+  price_usd,
+  onPress,
+}) => {
   return (
-    <View style={styles.container}>
+    <Pressable onPress={onPress} style={styles.container}>
       <View style={styles.column}>
         <Text style={styles.symbolText}>{symbol}</Text>
         <Text style={styles.nameText}>{name}</Text>
@@ -17,7 +23,7 @@ export const CoinsItem = ({name, symbol, percent_change_1h, price_usd}) => {
           <Text style={styles.percentText}>{percent_change_1h}</Text>
         </View>
       </View>
-    </View>
+    </Pressable>
   );
 };
 

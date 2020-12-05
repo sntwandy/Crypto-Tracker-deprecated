@@ -21,9 +21,8 @@ export const CoinsScreen = (props) => {
   const [coins, setCoins] = useCoins();
 
   // Handling the button press event
-  const handlePress = () => {
-    console.log('Go to details', props);
-    props.navigation.navigate('CoinDetail');
+  const handlePress = (coin) => {
+    props.navigation.navigate('CoinDetail', {coin});
   };
 
   return (
@@ -32,14 +31,16 @@ export const CoinsScreen = (props) => {
         <FlatList
           data={coins}
           keyExtractor={(item) => item.id}
-          renderItem={({item}) => <CoinsItem {...item} />}
+          renderItem={({item}) => (
+            <CoinsItem {...item} onPress={() => handlePress(item)} />
+          )}
         />
       ) : (
         <ActivityIndicator style={styles.loader} color="#000" size="large" />
       )}
-      {/* <Pressable style={styles.btn} onPress={handlePress}>
+      <Pressable style={styles.btn} onPress={handlePress}>
         <Text style={styles.btnText}>Go to detail</Text>
-      </Pressable> */}
+      </Pressable>
     </View>
   );
 };

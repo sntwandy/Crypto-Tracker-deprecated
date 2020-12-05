@@ -1,11 +1,17 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 
-export const CoinDetailScreen = () => (
-  <View style={styles.container}>
-    <Text style={styles.titleText}>Coin Detail Screen</Text>
-  </View>
-);
+export const CoinDetailScreen = (props) => {
+  useEffect(() => {
+    console.log(props.route.params);
+  }, [props]);
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.titleText}>Coin Detail Screen</Text>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
